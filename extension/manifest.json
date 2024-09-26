@@ -1,11 +1,11 @@
 {
-  "name": "Fresh Chrome Extension boilerplate",
-  "description": "Fully functional, useful bare minimum Google Chrome extension boilerplate [Manifest V3].",
-  "homepage_url": "https://github.com/llagerlof/fresh-chrome-extension",
-  "version": "3.1.0",
+  "name": "YouTube and native Video Clipper",
+  "description": "Allows you to natively clip a piece of a video you are watching and save it as a file",
+  "homepage_url": "https://github.com/codeScourge/video-clipper",
+  "version": "7.7.7",
   "manifest_version": 3,
   "action": {
-    "default_title": "Fresh Chrome Extension boilerplate 3.1.0",
+    "default_title": "Scourge's Video Clipper",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "assets/icons/icon16.png",

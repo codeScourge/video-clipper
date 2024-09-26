@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Scourge's Video Clipper</title>
   <style>
-    body { width: 200px; padding: 10px; }
-    button { width: 100%; padding: 10px; }
+    :root {
+      --background: #ffffff;
+      --foreground: #020817;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --border: #e2e8f0;
+      --button: #1e293b;
+      --button-foreground: #ffffff;
+      --button-disabled: #94a3b8;
+    }
+
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: var(--button);
+      color: var(--button-foreground);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    button:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+
+    button:disabled {
+      background-color: var(--button-disabled);
+      cursor: not-allowed;
+    }
+
+    #ul-video-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    #ul-video-list button {
+      width: calc(33.33% - 6px);
+      aspect-ratio: 1;
+      font-size: 16px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--foreground);
+    }
   </style>
 </head>
 <body>
@@ -14,11 +85,8 @@
   
   <section id="section-two">
     <button id="btn-start-recording">start recording</button>
-    <button id="btn-stop-recording">stop recording</button>
+    <button id="btn-stop-recording" disabled>stop recording</button>
   </section>
-
-
-
   <script src="popup.js"></script>
 </body>
 </html>

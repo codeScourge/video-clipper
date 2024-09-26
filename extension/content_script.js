@@ -5,11 +5,13 @@ function generateUID() {
     });
 }
 
-let mediaRecorders = {}; // Store MediaRecorders by videoUID
-let recordedChunks = {}; // Store recorded chunks by videoUID
-let youtubePlayers = {}; // Store YouTube player objects by videoUID
+// store shit by videoUID
+let mediaRecorders = {}; 
+let recordedChunks = {};
+let youtubePlayers = {};
 
-// content.js
+
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'getVideos') {
         const videos = document.querySelectorAll('video');
@@ -21,9 +23,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             const videoUID = generateUID();
             const color = colors[returnObject.length % colors.length];
 
-            if (!element.hasAttribute('data-uuid')) {
-                element.setAttribute('data-uuid', videoUID);
-            }
+            element.setAttribute('data-uuid', videoUID);
             element.style.border = `5px solid ${color}`;
 
             returnObject.push({
@@ -33,10 +33,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             });
         }
 
-        videos.forEach(video => processVideoElement(video));
-        youtubeIframes.forEach(iframe => processVideoElement(iframe, true));
+        videos && videos.forEach(video => processVideoElement(video));
+        youtubeIframes && youtubeIframes.forEach(iframe => processVideoElement(iframe, true));
 
-        sendResponse({ok: true, returnObject: returnObject});
+        sendResponse({ok: true, message: `Found ${returnObject.length} videos`, returnObject: returnObject});
 
     } else if (request.action == "startRecording") {
         const videoUID = request.videoUID;
