@@ -5,6 +5,9 @@ function generateUID() {
     });
 }
 
+let mediaRecorders = {}; // Store MediaRecorders by videoUID
+let recordedChunks = {}; // Store recorded chunks by videoUID
+
 // content.js
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === 'getVideos') {
